@@ -1,0 +1,32 @@
+<?php
+#turn error reporting on
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require('conf.php');
+echo 'Loaded ' .  $host . "<br />";
+
+$connection_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
+
+try{
+    $db = new PDO($connection_string, $username, $password);
+    echo "<br />" . 'Connected...'. "<br />";
+    echo 'query<br />';
+    $query = "create table if not exists `TestUsers` (
+              `id` int auto_increment not null, 
+	      `username` varchar(30) not null unique, 
+	      `pin` int default 0, 
+	      PRIMARY KEY(`id`)
+	      ) CHARACHTER SET utf8 COLLATE utf8_general_ci";
+    echo 'prep<br />';
+    $stmt = $db->prepare($query);
+    echo 'execute<br />';
+    $r = $stmt->execute();
+    echo "<br>" . $r . "<br>";
+    echo 'finished<br />';
+} catch (Exception $e) {
+    echo $e->getMessage();
+    exit('It didn\'t work');
+}
+?>
