@@ -21,6 +21,42 @@ try{
 	$stmt = $db->prepare($query);
 	$r = $stmt->execute();
 	echo "<br>" . $r . "<br>";
+
+	$insert_query = "INSERT INTO `TestUsers` (`id`, `username`, `pin`) VALUES ('11', 't23est', '032000')";
+	$stmt = $db->prepare($insert_query);
+	$r = $stmt->execute();
+
+	
+	$randID = rand(1, 1000);
+	$randUser = 'TestUser' . rand(1, 1000);
+	$randPin = rand(1, 1000);
+	echo $randID . ' ' . $randUser . ' ' . $randPin;
+	
+	
+	$insert_rand = "INSERT INTO `TestUsers` (`id`, `username`, `pin`) VALUES ('$randID', '$randUser', '$randPin')";
+	$stmt = $db->prepare($insert_rand);
+	$r = $stmt->execute();
+	echo "<br>" . $r . "<br>";
+	echo "<br />" . 'inserted';
+
+	$insert_query= "INSERT INTO  `TestUsers` (`username`, `pin`) VALUES (:username, :pin)"; 
+	$stmt = $db->prepare($insert_query);
+	$user = "George Washington";
+	$pin = 1234;
+	//$stmt = bindParam(":username" = $user, PDO::PARAM_STR);
+	//$stmt = bindParam(":id" = $pin, PDO::PARAM_INT);
+	//https://stackoverflow.com/questions/26349005/php-warning-pdostatementexecute-sqlstatehy093-invalid-parameter-number
+	$r = $stmt->execute(array(":username"=>$user, ":pin"=>$pin));
+	print_r($stmt->errorInfo());
+
+	$select_query = "SELECT * FROM `TestUsers` WHERE username = :username";
+	$stmt = $db->prepare($select_query);
+	$r = $stmt->execute();
+
+	$result = $stmt->fetch();
+	echo "<br><pre>" . var_export($result, true) . "</pre><br>";
+	
+
 }
 catch(Exception $e){
 	echo $e->getMessage();
