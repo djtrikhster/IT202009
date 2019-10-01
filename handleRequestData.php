@@ -16,7 +16,9 @@
 	if(isset($_GET['number2'])){
 		$number2 = (int)$_GET['number2'];
 		}
-		
+	//if (!((is_numeric($number)||(is_numeric($number2))))){
+	//}
+	echo "<br> if invalid inputs, value of invalid input set to 0 <br>";
 	
 	echo "<br> number 1: " . $number . " number2: " . $number2 . "<br>"; 
 	echo"<br>" . ($number + $number2) . "<br>";
