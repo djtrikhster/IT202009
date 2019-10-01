@@ -18,11 +18,11 @@
 		}
 	//if (!((is_numeric($number)||(is_numeric($number2))))){
 	//}
-	echo "<br> if invalid inputs, value of invalid input set to 0 <br>";
+	echo "<br> if invalid inputs, value of invalid charachters set to zero '3b' = 3 <br>";
 	
 	echo "<br> number 1: " . $number . " number2: " . $number2 . "<br>"; 
-	echo"<br>" . ($number + $number2) . "<br>";
-	echo $number . $number2;
+	echo"<br> Addition:" . ($number + $number2) . "<br>";
+	echo "<br> Concatonation: " . $number . $number2 . "<br>";
 	//TODO
 	//handle addition of 2 or more parameters with proper number parsing
 	//concatenate 2 or more parameter values and echo them
