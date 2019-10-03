@@ -2,10 +2,13 @@
 	<head>
 	<!--css and js here -->
 		<script>
-			//allert("Hello World")
+			alert("Hello World")
 			var myVariable;
-			let myOtherVariable;
-			var domEl = document.getElementsByTagName("BODY")[0];
+			let myOtherVariable
+			//var body = document.getElementByTagName('body');
+			var divEl = document.createElement('div');
+			divEl.style.cssText('background-color:red');
+			document.body.appendChild(divEl);
 			myVariable = prompt("What's your name?");
 			alert("Hello, " + myVariable);
 		</script>
@@ -18,6 +21,7 @@
 		</div>
 		<div>
 			<p>"added new element" </p>
+		</div>
 	</body>
 </html>
 
