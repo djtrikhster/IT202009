@@ -15,7 +15,7 @@ session_start();
     </header>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">NJT Skimmer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,9 +26,9 @@ session_start();
                     <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <?php
-                if(!isset($_SESSION['user']))
+                if(!isset($_SESSION['username']))
                 {
-                    echo '<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="registration.php">Sign Up</a></li>';
                 }
                 else
                 {

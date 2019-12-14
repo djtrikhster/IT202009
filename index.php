@@ -71,7 +71,6 @@ if (isset($_POST['stationlist']))
                 </div>
             </div>
         </div>
-
     </body>
 </html>
 <?php

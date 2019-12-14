@@ -14,31 +14,34 @@ include( 'conf.php')
     }
 else
 {
-    echo '<form action="" method="post" class=""><fieldset><input type="text" name="uname" placeholder="Username" required class="form-control"><input type="password" name="pass" placeholder="********" required class="form-control"><input type="submit" value="login" class="form-control"></fieldset></form>';
+    echo '<form action="" method="post" class=""><fieldset><input type="text" name="username" placeholder="Username" required class="form-control"><input type="password" name="password" placeholder="********" required class="form-control"><input type="submit" value="login" class="form-control"></fieldset></form>';
     if ( ! empty( $_POST ) ) {
-        if ( isset( $_POST['uname'] ) && isset( $_POST['pass'] ) )
+        if ( isset( $_POST['username'] ) && isset( $_POST['password'] ) )
         {
             //making connection
-            $query = "SELECT * FROM `accounts` WHERE u_name = :u_name AND pass = :pass";
-            $u_name = $_POST['uname'];
-            $pass = $_POST['pass'];
+            $query = "SELECT id, username, password FROM `accounts` WHERE username = :username";
+            $username = $_POST['username'];
+            $password = $_POST['password'];
             $stmt = $db->prepare($query);
-            $stmt-> execute(array(':u_name' => $u_name, ':pass' => $pass));
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            echo var_dump($user);
+            $stmt-> execute(array(":username" => $username));
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            echo var_dump($username);
 
             //checking logged in
-            if($user['id'] > 0 && $user['pass'] == $pass){
-                echo '<h3>Login Successful... Redirecting... </h3>';
-                $_SESSION["user"] = var_export($user);
-                session_destroy();
-                session_start();
-                //echo $_SESSION['user'][0];
-                header( "refresh:5;url=index.php" );
-                exit();
+            if($result['id'] > 0 ){
+                if(password_verify($password, $result['password'])){
+                    echo '<h3>Login Successful... Redirecting... </h3>';
+                    //$_SESSION["user"] = var_export($user);
+                    //session_destroy();
+                    //session_start();
+                    //echo $_SESSION['user'][0];
+                    //header( "refresh:5;url=index.php" );
+                    exit();
+                }
+                else echo '<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Oh snap!</strong> <a href="#" class="alert-link">Password Incorrect</a></div>';
             }
             else{
-                echo '<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.</div>';
+                echo '<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Oh snap!</strong> <a href="#" class="alert-link">Username or Password Incorrect</a></div>';
             }
         }
     }
