@@ -1,6 +1,5 @@
 <?php
 include_once('initDB.php');
-include_once('functions.php');
 //ini_set('display_errors',1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
@@ -15,7 +14,7 @@ session_start();
     </header>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">NJT Skimmer</a>
+        <a class="navbar-brand" href="index.php">NJT Skimmer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +27,7 @@ session_start();
                 <?php
                 if(!isset($_SESSION['username']))
                 {
-                    echo '<li class="nav-item"><a class="nav-link" href="registration.php">Sign Up</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="registration.php">Sign Up/Login</a></li>';
                 }
                 else
                 {
@@ -37,10 +36,10 @@ session_start();
                 ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">PLACEHOLDER</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">PLACEHOLDER</a>
                 </li>
             </ul>
         </div>

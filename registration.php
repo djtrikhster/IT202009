@@ -1,40 +1,34 @@
 <?php
 include_once('header.php')
 ?>
-<html>
-    <body>
-        <div class="row">
-            <div class="container">
-                <div class="jumbotron">
-                    <form method="post" action="" >
-                        <fieldset>
+<section>
+    <br>
+    <div class="bs-component">
+        <div class="container">
+            <div class="jumbotron" align="center">
+                <form method="post" action="">
+                    <fieldset>
 
-                            <h4>
-                                Registration Form
-                            </h4>
+                        <h4>
+                            Registration Form
+                        </h4>
 
-                            <input type="text" name="username" value="" placeholder="Username" class="form-control">
+                        <input type="text" name="username" value="" placeholder="Username" class="form-control">
 
-                            <input type="text" name="firstname" value="" placeholder="First Name" class="form-control">
-                            <input type="text" name="lastname" value="" placeholder="Last Name" class="form-control">
+                        <input type="text" name="firstname" value="" placeholder="First Name" class="form-control">
+                        <input type="text" name="lastname" value="" placeholder="Last Name" class="form-control">
 
-                            <input type="email" name="email" value="" placeholder="email" class="form-control" class="form-control">
+                        <input type="email" name="email" value="" placeholder="email" class="form-control" class="form-control">
 
-                            <input type="password" name="password" placeholder="password" class="form-control">
-                            <input type="password" name="password_conf" placeholder="confirm password" class="form-control">
+                        <input type="password" name="password" placeholder="password" class="form-control">
+                        <input type="password" name="password_conf" placeholder="confirm password" class="form-control">
 
-                            <button type="submit" class="btn btn-primary btn-lg" name="register_btn">Register</button>
-                            <a class="btn btn-primary btn-lg" href="login.php" role="button">Log In Existing</a>
+                        <button type="submit" class="btn btn-primary btn-lg" name="register_btn">Register</button>
+                        <a class="btn btn-primary btn-lg" href="login.php" role="button">Log In Existing</a>
 
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="container">
-                <div class="jumbotron">
-                    <?php
+                    </fieldset>
+                </form>
+                <?php
     if(isset($_POST['username'])
        && isset($_POST['password'])
        && isset($_POST['firstname'])
@@ -71,7 +65,7 @@ include_once('header.php')
             exit();
         }
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Email address '$email' is invalid.";
+            echo "<h2>Email address '$email' is invalid.</h2>";
             exit();
         }
         try{
@@ -85,7 +79,6 @@ include_once('header.php')
             $stmt->bindParam(4, $email, PDO::PARAM_STR);
             $stmt->bindParam(5, $password, PDO::PARAM_STR);
 
-
             $result = $stmt->execute(
                 array(":username"=>$username,
                       ":firstname"=>$firstname,
@@ -96,16 +89,16 @@ include_once('header.php')
             );
             print_r($stmt->errorInfo());
 
-            echo var_export($result, true);
+            //echo var_export($result, true);
+            header( "refresh:5;url=index.php" );
+            exit();
         }
         catch(Exception $e){
             echo $e->getMessage();
         }
     }
                     ?>
-                </div>
-
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</section>

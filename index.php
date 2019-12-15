@@ -6,7 +6,7 @@ $stmt = $db->prepare($query);
 $stmt-> execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo var_dump($_SESSION);
+//echo var_dump($_SESSION);
 
 if(!$data)
 {
@@ -25,21 +25,18 @@ if (isset($_POST['stationlist']))
 }
 ?>
 
-<!DOCTYPE HTML>
-<html>
-
+<section class="container">
+    <br>
     <div class="bs-component">
         <div class="jumbotron">
             <div align="center">
-                  <img style="height: 450px; width: 100%; display: block;" src="https://cdn.abcotvs.com/dip/images/4182118_090818-wabc-ap-nj-transit-img.jpg?w=800&r=16%3A9">
-
-
+                <img style="height: 450px; width: 100%; display: block;" src="https://cdn.abcotvs.com/dip/images/4182118_090818-wabc-ap-nj-transit-img.jpg?w=800&r=16%3A9">
             </div>
         </div>
     </div>
 
-    <body class="container">
-        <div class="container">
+    <div class="bs-component">
+        <div class="jumbotron">
             <div class="card text-white bg-primary mb-3" style="max-width:500rem;">
                 <div class="card-header">Stations</div>
                 <div class="card-body">
@@ -71,8 +68,8 @@ if (isset($_POST['stationlist']))
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</section>
 <?php
 include_once('footer.php');
 ?>
