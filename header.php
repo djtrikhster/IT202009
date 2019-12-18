@@ -28,9 +28,11 @@ session_start();
                 if(!isset($_SESSION['username']))
                 {
                     echo '<li class="nav-item"><a class="nav-link" href="registration.php">Sign Up/Login</a></li>';
+
                 }
                 else
                 {
+                    echo '<li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
                 }
                 ?>
