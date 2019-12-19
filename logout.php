@@ -18,3 +18,6 @@ include_once('header.php');
         </div>
     </div>
 </section>
+<?php
+include_once('footer.php');
+?>

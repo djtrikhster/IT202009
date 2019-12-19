@@ -73,6 +73,7 @@ include_once('header.php')
 
             $stmt = $db->prepare("INSERT into `accounts` (`username`, `password`, `firstname`, `lastname`, `email`) VALUES(:username, :password, :firstname, :lastname, :email)");
 
+
             $stmt->bindParam(1, $username, PDO::PARAM_STR);
             $stmt->bindParam(2, $firstname, PDO::PARAM_STR);
             $stmt->bindParam(3, $lastname, PDO::PARAM_STR);
@@ -88,18 +89,27 @@ include_once('header.php')
                      )
             );
 
-            //echo var_export($result, true);
-            echo "Welcome, " . $firstname;
+            echo '<br><h3>Registration Successful '$result['firstname'] . '... Redirecting... </h3>';
+            //$_SESSION["user"] = var_export($user);
+            session_destroy();
+            session_start();
+            //echo $_SESSION['user'][0];
+            $_SESSION['username'] = $username;
+            $_SESSION['firstname'] = $firstname;
+            $_SESSION['active'] = true;
+            #echo var_dump($_SESSION);
             header( "refresh:5;url=index.php" );
-
             exit();
         }
         catch(Exception $e){
             echo $e->getMessage();
         }
     }
-                    ?>
+                ?>
             </div>
         </div>
     </div>
 </section>
+<?php
+include_once('footer.php');
+?>
