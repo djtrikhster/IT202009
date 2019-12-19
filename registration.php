@@ -87,10 +87,11 @@ include_once('header.php')
                       ":password"=>$password,
                      )
             );
-            print_r($stmt->errorInfo());
 
             //echo var_export($result, true);
+            echo "Welcome, " . $firstname;
             header( "refresh:5;url=index.php" );
+
             exit();
         }
         catch(Exception $e){

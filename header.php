@@ -38,10 +38,10 @@ session_start();
                 ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">PLACEHOLDER</a>
+                    <a class="nav-link" href="#"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">PLACEHOLDER</a>
+                    <a class="nav-link" href="#"></a>
                 </li>
             </ul>
         </div>
