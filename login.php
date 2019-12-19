@@ -25,6 +25,7 @@ include( 'conf.php')
                             $password = $_POST['password'];
 
                             $stmt = $db->prepare($query);
+                            echo var_export($username);
                             $stmt-> execute(array(":username" => $username));
                             $result = $stmt->fetch(PDO::FETCH_ASSOC);
                             //echo var_dump($username);

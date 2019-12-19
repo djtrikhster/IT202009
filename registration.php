@@ -89,7 +89,7 @@ include_once('header.php')
                      )
             );
 
-            echo '<br><h3>Registration Successful '$result['firstname'] . '... Redirecting... </h3>';
+            echo '<br><h3>Registration Successful '. $result['firstname'] . '... Redirecting... </h3>';
             //$_SESSION["user"] = var_export($user);
             session_destroy();
             session_start();
